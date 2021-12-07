@@ -36,6 +36,7 @@ CREATE TABLE Notification(
     id_User INT REFERENCES User
 );
 
+--ver end date e init date tem de dar um daqueles valores
 CREATE TABLE Subscription(
     id INT PRIMARY KEY,
     initDate DATE NOT NULL,
@@ -48,14 +49,14 @@ CREATE TABLE Subscription(
 
 CREATE TABLE CreditCard(
     id INT PRIMARY KEY,
-    cardNumber INT(16,0) NOT NULL UNIQUE,    --<= 8 digits
-    securityNumber INT(4,0) NOT NULL,
+    cardNumber INT(16,0) NOT NULL UNIQUE,    --<= 16 digits
+    securityNumber INT(3,0) NOT NULL,
     name TEXT NOT NULL UNIQUE,
     expireDate DATE NOT NULL,
 
     CONSTRAINT cardNumberSize CHECK (cardNumber > 999999999999999),
-    CONSTRAINT securityNumberSize CHECK (securityNumber > 999),
-    CONSTRAINT expiringDate CHECK (expireDate > CURRENT_DATE)
+    CONSTRAINT securityNumberSize CHECK (securityNumber > 99),
+    CONSTRAINT expiringDate CHECK (expireDate > Date('now'))
 );
 
 CREATE TABLE Show(
