@@ -1,3 +1,5 @@
+.mode columns
+.headers ON
 .nullvalue NULL
 
 PRAGMA foreign_keys=ON;
@@ -41,19 +43,18 @@ CREATE TABLE Subscription(
     id_CreditCard INT NOT NULL UNIQUE REFERENCES CreditCard,
 
     CONSTRAINT validDates CHECK (DATE(initDate) < DATE(endDate)),
-    CONSTRAINT numMonthsSubscribed CHECK () -- Não está a funcionar
+    CONSTRAINT numMonthsSubscribed CHECK (DATE(endDate) IN (DATE(initDate, '+1 month'), DATE(initDate, '+6 months'), DATE(initDate, '+1 year')))
 );
 
 CREATE TABLE CreditCard(
     id INT PRIMARY KEY,
     cardNumber INT(16,0) NOT NULL UNIQUE, 
     securityNumber INT(3,0) NOT NULL,
-    name TEXT NOT NULL UNIQUE,
+    name TEXT NOT NULL,
     expireDate DATE NOT NULL,
 
     CONSTRAINT cardNumberSize CHECK (cardNumber > 999999999999999),
-    CONSTRAINT securityNumberSize CHECK (securityNumber > 99),
-    CONSTRAINT expiringDate CHECK (expireDate > DATE('now'))
+    CONSTRAINT securityNumberSize CHECK (securityNumber > 99)
 );
 
 CREATE TABLE Show(
