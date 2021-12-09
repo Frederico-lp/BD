@@ -1,5 +1,3 @@
-.mode columns
-.headers on
 .nullvalue NULL
 
 PRAGMA foreign_keys=ON;
@@ -25,7 +23,7 @@ CREATE TABLE User(
     email TEXT NOT NULL UNIQUE,
     password TEXT NOT NULL,
     birth DATE,
-    fullName TEXT NOT NULL,
+    fullName TEXT,
     subActive BOOL NOT NULL,
     id_Subscription INT REFERENCES Subscription
 );
@@ -36,27 +34,26 @@ CREATE TABLE Notification(
     id_User INT REFERENCES User
 );
 
---ver end date e init date tem de dar um daqueles valores
 CREATE TABLE Subscription(
     id INT PRIMARY KEY,
     initDate DATE NOT NULL,
     endDate DATE NOT NULL,
     id_CreditCard INT NOT NULL UNIQUE REFERENCES CreditCard,
 
-    CONSTRAINT validDates CHECK (initDate < endDate),
-    CONSTRAINT numMonthsSubscribed CHECK (endDate - initDate IN (1, 6, 12)) -- Não está a funcionar
+    CONSTRAINT validDates CHECK (DATE(initDate) < DATE(endDate)),
+    CONSTRAINT numMonthsSubscribed CHECK () -- Não está a funcionar
 );
 
 CREATE TABLE CreditCard(
     id INT PRIMARY KEY,
-    cardNumber INT(16,0) NOT NULL UNIQUE,    --<= 16 digits
+    cardNumber INT(16,0) NOT NULL UNIQUE, 
     securityNumber INT(3,0) NOT NULL,
     name TEXT NOT NULL UNIQUE,
     expireDate DATE NOT NULL,
 
     CONSTRAINT cardNumberSize CHECK (cardNumber > 999999999999999),
     CONSTRAINT securityNumberSize CHECK (securityNumber > 99),
-    CONSTRAINT expiringDate CHECK (expireDate > Date('now'))
+    CONSTRAINT expiringDate CHECK (expireDate > DATE('now'))
 );
 
 CREATE TABLE Show(
@@ -134,4 +131,3 @@ CREATE TABLE ShowGenre(
 
     PRIMARY KEY(id_Show, id_Genre)
 );
-
