@@ -59,7 +59,7 @@ CREATE TABLE CreditCard(
 
 CREATE TABLE Show(
     id INT PRIMARY KEY,
-    name TEXT NOT NULL,
+    name TEXT NOT NULL UNIQUE,
     launchDate DATE NOT NULL,
     synopsis TEXT NOT NULL,
     rating FLOAT NOT NULL,
