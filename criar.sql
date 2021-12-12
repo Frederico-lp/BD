@@ -27,9 +27,9 @@ CREATE TABLE User(
     birth DATE,
     fullName TEXT,
     subActive BOOL NOT NULL,
-    id_Subscription INT REFERENCES Subscription
+    id_Subscription INT REFERENCES Subscription,
     
-    CONSTRAINT validpass CHECK (LENGTH(password) > 8)
+    CONSTRAINT validPass CHECK (LENGTH(password) > 8)
 );
 
 CREATE TABLE Notification(
