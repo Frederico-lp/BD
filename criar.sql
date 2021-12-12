@@ -23,11 +23,13 @@ CREATE TABLE User(
     id INT PRIMARY KEY,
     username TEXT NOT NULL UNIQUE,
     email TEXT NOT NULL UNIQUE,
-    password TEXT NOT NULL CHECK (LENGTH(password) > 8),
+    password TEXT NOT NULL,
     birth DATE,
     fullName TEXT,
     subActive BOOL NOT NULL,
     id_Subscription INT REFERENCES Subscription
+    
+    CONSTRAINT validpass CHECK (LENGTH(password) > 8)
 );
 
 CREATE TABLE Notification(
