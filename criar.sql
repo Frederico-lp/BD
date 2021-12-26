@@ -27,7 +27,9 @@ CREATE TABLE User(
     birth DATE,
     fullName TEXT,
     subActive BOOL NOT NULL,
-    id_Subscription INT REFERENCES Subscription
+    id_Subscription INT REFERENCES Subscription,
+    
+    CONSTRAINT validPass CHECK (LENGTH(password) > 8)
 );
 
 CREATE TABLE Notification(
@@ -42,7 +44,7 @@ CREATE TABLE Subscription(
     endDate DATE NOT NULL,
     id_CreditCard INT NOT NULL UNIQUE REFERENCES CreditCard,
 
-    CONSTRAINT validDates CHECK (DATE(initDate) < DATE(endDate)),
+    CONSTRAINT validDate CHECK (DATE(initDate) < DATE(endDate)),
     CONSTRAINT numMonthsSubscribed CHECK (DATE(endDate) IN (DATE(initDate, '+1 month'), DATE(initDate, '+6 months'), DATE(initDate, '+1 year')))
 );
 
@@ -53,18 +55,18 @@ CREATE TABLE CreditCard(
     name TEXT NOT NULL,
     expireDate DATE NOT NULL,
 
-    CONSTRAINT cardNumberSize CHECK (cardNumber > 999999999999999),
-    CONSTRAINT securityNumberSize CHECK (securityNumber > 99)
+    CONSTRAINT validCardNumber CHECK (cardNumber > 999999999999999),
+    CONSTRAINT validSecurityNumber CHECK (securityNumber > 99)
 );
 
 CREATE TABLE Show(
     id INT PRIMARY KEY,
-    name TEXT NOT NULL,
+    name TEXT NOT NULL UNIQUE,
     launchDate DATE NOT NULL,
     synopsis TEXT NOT NULL,
     rating FLOAT NOT NULL,
 
-    CONSTRAINT ratings CHECK (rating >= 0.0 AND rating <= 10.0)
+    CONSTRAINT validRating CHECK (rating >= 0.0 AND rating <= 10.0)
 );
 
 CREATE TABLE Movie(
@@ -83,7 +85,7 @@ CREATE TABLE Season(
     number INT NOT NULL,
     id_Serie INT REFERENCES Serie,
 
-    CONSTRAINT seasonNumber CHECK (number > 0)
+    CONSTRAINT validSeasonNumber CHECK (number > 0)
 );
 
 CREATE TABLE Episode(
