@@ -4,9 +4,6 @@
 
 PRAGMA foreign_keys = ON;
 
-
-
---verificar se os credit cards sao os q estao na subscription
 INSERT INTO CreditCard
     (id, cardNumber, securityNumber, name, expireDate)
 VALUES
@@ -139,7 +136,6 @@ VALUES
     (39, 'Hogan', 'hogan3884@hotmail.couk', 'KTT33PEW3WD', '1993-08-03', 'Pearl Manning', 'True', 39),
     (40, 'Salas', 'salas@protonmail.ca', 'ZOW47XVD3OO', '1983-11-19', 'Dacey Walter', 'True', 40);
 
-
 INSERT INTO Notification
     (id, content, id_User)
 VALUES
@@ -174,7 +170,6 @@ VALUES
     (29, 'lacus. Ut nec urna', 32),
     (30, 'Suspendisse sed dolor.', 5);
 
---Falta as datas certas dos shows, deixar a descrição
 INSERT INTO Show
     (id, name, launchDate, synopsis, rating)
 VALUES
@@ -209,7 +204,6 @@ VALUES
     (29, 'The 100', '2014-03-19', 'Set ninety-seven years after a nuclear war has destroyed civilization, when a spaceship housing humanity s lone survivors sends one hundred juvenile delinquents back to Earth, in hopes of possibly re-populating the planet.', '7.6'),
     (30, 'Game of Thrones', '2011-04-17', 'Nine noble families fight for control over the lands of Westeros, while an ancient enemy returns after being dormant for millennia.', '9.2');
 
---Tambem podes por a duração certa se quiseres
 INSERT INTO Movie
     (id, duration)
 VALUES
@@ -248,7 +242,6 @@ VALUES
     (29),
     (30);
 
--- Tem 2 seasons por serie, mas podes e deves alterar os valores para algumas series terem 3 ou 4 temporadas
 INSERT INTO Season
     (id, number, id_Serie)
 VALUES
@@ -283,7 +276,6 @@ VALUES
     (29, 4, 30),
     (30, 5, 30);
 
---Se quiseres também podes alterar o nº de episodes para as seasons terem diferentes nº de episodes (good luck)
 INSERT INTO Episode
     (id, number, name, duration, launchDate, id_Season)
 VALUES
@@ -535,8 +527,6 @@ VALUES
     (85, 17, '2022-01-14', 'cursus luctus, ipsum leo elementum sem, vitae aliquam'),
     (119, 15, '2021-12-15', 'posuere cubilia Curae Phasellus ornare. Fusce mollis. Duis sit amet diam eu dolor');
 
-
-
 INSERT INTO Watched
     (id_Episode, id_User, wdate)
 VALUES
@@ -644,25 +634,3 @@ VALUES
     (28, 12),
     (29, 8),
     (30, 8);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
