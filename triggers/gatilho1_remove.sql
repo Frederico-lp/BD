@@ -4,3 +4,4 @@
 
 PRAGMA foreign_keys = ON;
 
+DROP TRIGGER GATILHO_1;
