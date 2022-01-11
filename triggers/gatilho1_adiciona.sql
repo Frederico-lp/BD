@@ -1,4 +1,8 @@
-PRAGMA foreign_keys=ON;
+.mode	columns
+.headers	on
+.nullvalue	NULL
+
+PRAGMA foreign_keys = ON;
 
 --notificate user when new episode of serie he is following is added
 CREATE TRIGGER IF NOT EXISTS GATILHO_1
