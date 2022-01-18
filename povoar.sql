@@ -46,7 +46,17 @@ VALUES
     (37, 8388449178508454, 662, 'Geoffrey Workman', '2023-09-08'),
     (38, 8105148040015126, 907, 'Joshua Carey', '2024-12-18'),
     (39, 5079154773281010, 541, 'Alma Harrison', '2023-04-08'),
-    (40, 2577847135695122, 631, 'Ria Alvarado', '2024-03-17');
+    (40, 2577847135695122, 631, 'Ria Alvarado', '2024-03-17'),
+    (41, 4917459299774836, 290, 'Mariam Farmer', '2022-06-15'),
+    (42, 4026311526388385, 914, 'Urielle Anderson', '2024-12-06'),
+    (43, 4844814626863520, 992, 'Sigourney Webster', '2023-08-31'),
+    (44, 4508828287425244, 416, 'Lev Rosales', '2024-05-14'),
+    (45, 4175006423898580, 286, 'Irma Stewart', '2023-05-12'),
+    (46, 4508648185953620, 940, 'Simone Short', '2024-07-21'),
+    (47, 4175005474872882, 662, 'Geoffrey Workman', '2023-09-08'),
+    (48, 4917263965389865, 907, 'Joshua Carey', '2024-12-18'),
+    (49, 4508625523734334, 541, 'Alma Harrison', '2023-04-08'),
+    (50, 4175005873886863, 631, 'Ria Alvarado', '2024-03-17');
 
 INSERT INTO Subscription
     (id, initDate, endDate, id_CreditCard)
@@ -90,7 +100,17 @@ VALUES
     (37, '2021-11-02', '2022-11-02', 37),
     (38, '2021-11-11', '2022-11-11', 38),
     (39, '2021-05-30', '2022-05-30', 39),
-    (40, '2021-08-22', '2022-08-22', 40);
+    (40, '2021-08-22', '2022-08-22', 40),
+    (41, '2021-11-13', '2022-11-13', 41),
+    (42, '2021-03-20', '2022-03-20', 42),
+    (43, '2021-05-02', '2022-05-02', 43),
+    (44, '2021-09-13', '2022-09-13', 44),
+    (45, '2021-12-26', '2022-12-26', 45),
+    (46, '2021-01-08', '2022-01-08', 46),
+    (47, '2021-11-02', '2022-11-02', 47),
+    (48, '2021-11-11', '2022-11-11', 48),
+    (49, '2021-05-30', '2022-05-30', 49),
+    (50, '2021-08-22', '2022-08-22', 50);
 
 INSERT INTO User
     (id, username, email, password, birth, fullName, subActive, id_Subscription)
@@ -134,7 +154,17 @@ VALUES
     (37, 'Horton', 'horton@protonmail.edu', 'EPB47LWB6VZ', '1977-10-21', 'Philip Hopkins', 'True', 37),
     (38, 'Richardson', 'richardson379@icloud.org', 'FNG96NVY1RR', '1986-01-11', 'Dai Frost', 'True', 38),
     (39, 'Hogan', 'hogan3884@hotmail.couk', 'KTT33PEW3WD', '1993-08-03', 'Pearl Manning', 'True', 39),
-    (40, 'Salas', 'salas@protonmail.ca', 'ZOW47XVD3OO', '1983-11-19', 'Dacey Walter', 'True', 40);
+    (40, 'Salas', 'salas@protonmail.ca', 'ZOW47XVD3OO', '1983-11-19', 'Dacey Walter', 'True', 40),
+    (41,'Carter Ramos','elit.aliquam@hotmail.com','FRC25POP8OO','1992-01-19','Quyn Morris','True',41),
+    (42,'Yolanda Lancaster','dui@aol.org', 'TXV18TEP1MH','1991-09-26','Justina Casey','True',42),
+    (43,'Michael Shaffer','class.aptent@outlook.edu', 'BMC10RVY3EJ','1993-12-02','Camden Flores','True',43),
+    (44,'Geraldine Hayes','non.magna@protonmail.edu', 'INI16FPZ2IK','1996-06-05','Alfonso Goff','True',44),
+    (45,'Ariel Valencia','vivamus.molestie@protonmail.org', 'SVB64QFJ0NO','1991-01-19','Norman Lawson','True',45),
+    (46,'Vincent Steele','duia@aol.ca', 'DPQ28WDY3OC','1993-03-21','Adena Merritt','True',46),
+    (47,'Debra Gross','urna.suscipit@outlook.couk', 'ASD22YKN0RX','2001-07-04','Leila Hobbs','True',47),
+    (48,'Vielka Mason','cursus@outlook.org', 'WSE27NPW5EK','2001-06-13','Amos Davis','True',48),
+    (49,'Sara Preston','donec@outlook.edu', 'MYO71OQW3KE','1999-03-12','Flynn Ayers','True',49),
+    (50,'Arden Solis','facilisis.vitae@aol.ca', 'VXV23KUD2HJ','2000-02-01','Zenia Ayers','True',50);
 
 INSERT INTO Notification
     (id, content, id_User)
@@ -184,7 +214,7 @@ VALUES
     (9, 'Fifty Shades of Grey', '2015-02-13', 'Literature student Anastasia Steele s life changes forever when she meets handsome, yet tormented, billionaire Christian Grey.', '4.1'),
     (10, 'Divergent', '2014-03-21', 'In a world divided by factions based on virtues, Tris learns she s Divergent and won t fit in. When she discovers a plot to destroy Divergents, Tris and the mysterious Four must find out what makes Divergents dangerous before it s too late.', '6.6'),
     (11, 'Maze Runner', '2014-09-19', 'Thomas is deposited in a community of boys after his memory is erased, soon learning they re all trapped in a maze that will require him to join forces with fellow "runners" for a shot at escape.', '6.8'),
-    (12, 'Old Henry', '2021-10-01', 'An action western about a farmer who takes in an injured man with a satchel of cash. When a posse comes for the money, he must decide who to trust. Defending a siege, he reveals a gunslinging talent calling his true identity into question.', '7.2'),
+    (12, 'Old Henry', '2021-10-01', 'An action western about a farmer who takes in an injured man with a satchel of cash. When a posse comes for the money, he must decide who to trust. Defending a siege, he reveals a gunslinging talent calling his True identity into question.', '7.2'),
     (13, 'Inception', '2010-07-16', 'A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O., but his tragic past may doom the project and his team to disaster.', '8.8'),
     (14, 'Shutter Island', '2010-02-19', 'In 1954, a U.S. Marshal investigates the disappearance of a murderer who escaped from a hospital for the criminally insane.', '8.2'),
     (15, 'Deadpool', '2016-02-12', 'A wisecracking mercenary gets experimented on and becomes immortal but ugly, and sets out to track down the man who ruined his looks.', '8.0'),
