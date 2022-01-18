@@ -27,7 +27,7 @@ CREATE TABLE User(
     birth DATE,
     fullName TEXT,
     subActive BOOL NOT NULL,
-    id_Subscription INT REFERENCES Subscription,
+    id_Subscription INT REFERENCES Subscription ON DELETE CASCADE ON UPDATE CASCADE,
     
     CONSTRAINT validPass CHECK (LENGTH(password) > 8)
 );
@@ -35,14 +35,14 @@ CREATE TABLE User(
 CREATE TABLE Notification(
     id INT PRIMARY KEY,
     content TEXT NOT NULL,
-    id_User INT REFERENCES User
+    id_User INT REFERENCES User ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE Subscription(
     id INT PRIMARY KEY,
     initDate DATE NOT NULL,
     endDate DATE NOT NULL,
-    id_CreditCard INT NOT NULL UNIQUE REFERENCES CreditCard,
+    id_CreditCard INT NOT NULL UNIQUE REFERENCES CreditCard ON DELETE CASCADE ON UPDATE CASCADE,
 
     CONSTRAINT validDate CHECK (DATE(initDate) < DATE(endDate)),
     CONSTRAINT numMonthsSubscribed CHECK (DATE(endDate) IN (DATE(initDate, '+1 month'), DATE(initDate, '+6 months'), DATE(initDate, '+1 year')))
@@ -70,7 +70,7 @@ CREATE TABLE Show(
 );
 
 CREATE TABLE Movie(
-    id INT PRIMARY KEY REFERENCES Show,
+    id INT PRIMARY KEY REFERENCES Show ON DELETE CASCADE ON UDPATE CASCADE,
     duration TIME NOT NULL,
 
     CONSTRAINT validDuration CHECK (duration != '00:00:00')
@@ -83,7 +83,7 @@ CREATE TABLE Serie(
 CREATE TABLE Season(
     id INT PRIMARY KEY,
     number INT NOT NULL,
-    id_Serie INT REFERENCES Serie,
+    id_Serie INT REFERENCES Serie ON DELETE CASCADE ON UPDATE CASCADE,
 
     CONSTRAINT validSeasonNumber CHECK (number > 0)
 );
@@ -94,7 +94,7 @@ CREATE TABLE Episode(
     name TEXT NOT NULL,
     duration TIME NOT NULL,
     launchDate DATE NOT NULL,
-    id_Season INT REFERENCES Season,
+    id_Season INT REFERENCES Season ON DELETE CASCADE ON UPDATE CASCADE,
 
     CONSTRAINT validDuration CHECK (duration != '00:00:00')
 );
@@ -105,15 +105,15 @@ CREATE TABLE Genre(
 );
 
 CREATE TABLE Following(
-    id_Serie INT REFERENCES Serie,
-    id_User INT REFERENCES User,
+    id_Serie INT REFERENCES Serie ON DELETE CASCADE ON UPDATE CASCADE,
+    id_User INT REFERENCES User ON DELETE CASCADE ON UPDATE CASCADE,
 
     PRIMARY KEY(id_Serie, id_User)
 );
 
 CREATE TABLE Comment(
-    id_Episode INT REFERENCES Episode,
-    id_User INT REFERENCES User,
+    id_Episode INT REFERENCES Episode ON DELETE CASCADE ON UPDATE CASCADE,
+    id_User INT REFERENCES User ON DELETE CASCADE ON UPDATE CASCADE,
     cDate DATE NOT NULL,
     content TEXT NOT NULL,
 
@@ -121,16 +121,16 @@ CREATE TABLE Comment(
 );
 
 CREATE TABLE Watched(
-    id_Episode INT REFERENCES Episode,
-    id_User INT REFERENCES User,
+    id_Episode INT REFERENCES Episode ON DELETE CASCADE ON UPDATE CASCADE,
+    id_User INT REFERENCES User ON DELETE CASCADE ON UPDATE CASCADE,
     wdate DATE NOT NULL,
 
     PRIMARY KEY(id_Episode, id_User)
 );
 
 CREATE TABLE ShowGenre(
-    id_Show INT REFERENCES Show,
-    id_Genre INT REFERENCES Genre,
+    id_Show INT REFERENCES Show ON DELETE CASCADE ON UPDATE CASCADE,
+    id_Genre INT REFERENCES Genre ON DELETE CASCADE ON UPDATE CASCADE,
 
     PRIMARY KEY(id_Show, id_Genre)
 );
