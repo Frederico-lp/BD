@@ -9,34 +9,37 @@ CREATE TRIGGER IF NOT EXISTS GATILHO_1
 AFTER INSERT
 ON Episode
 --quando user seguir serie
-WHEN
-    SELECT id_User
-    FROM Following, (
-        SELECT id_Serie as id_of_season
-        FROM Season
-        WHERE id_Serie = inserted.id_Season
-    )
-    WHERE id_Serie = id_of_season
---nao estou a guardar o user e acho que falta alguma coisa em cima
-BEGIN 
+-- WHEN
+--     SELECT count(id_User) > 0
+--     FROM Following, (
+--         SELECT id_Serie as id_of_serie
+--         FROM Season
+--         WHERE id_Serie = (
+--             SELECT id_Serie 
+--             FROM Season
+--             WHERE id = NEW.id_Season
+--             --WHERE id = NEW.id_Season
+--             )
+--     )
+--     WHERE id_Serie = id_of_serie
+
+
+BEGIN
     INSERT INTO Notification
-    VALUES (((SELECT max(id) FROM Notification) + 1), 'Episode'+inserted.number+'was added', User.id);
+    values (31, "test new", 4)
+    -- SELECT ((SELECT max(id) FROM Notification) + 1), 'Episode was added',SELECT DISTINCT id_User
+    -- FROM Following, (
+    --     SELECT id_Serie as id_of_serie
+    --     FROM Season
+    --     WHERE id_Serie = (
+    --         SELECT id_Serie 
+    --         FROM Season
+    --         WHERE id = 2
+    --         --WHERE id = NEW.id_Season
+    --         )
+    -- )
+    -- WHERE id_Serie = id_of_serie
 END;
 
-INSERT INTO Notification
-SELECT ((SELECT max(id) FROM Notification) + 1), 'Episode'+inserted.number+'was added', id_User
-FROM Following, (
-    SELECT id_Serie as id_of_season
-    FROM Season
-    WHERE id_Serie = 28
-)
-WHERE id_Serie = id_of_season;
 
--- SELECT id_User
--- FROM Following, (
---     SELECT id_Serie as id_of_season
---     FROM Season
---     WHERE id_Serie = 28
--- )
--- WHERE id_Serie = id_of_season;
 
