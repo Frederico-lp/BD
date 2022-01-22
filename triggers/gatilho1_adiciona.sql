@@ -26,7 +26,7 @@ ON Episode
 
 BEGIN
     INSERT INTO Notification
-    SELECT ((SELECT max(id) FROM Notification) + 1), 'Episode was added',SELECT DISTINCT id_User
+    SELECT 'Episode was added', id_User
     FROM Following, (
         SELECT id_Serie as id_of_serie
         FROM Season
@@ -37,7 +37,7 @@ BEGIN
             WHERE id = NEW.id_Season
             )
     )
-    WHERE id_Serie = id_of_serie
+    WHERE id_Serie = id_of_serie;
 END;
 
 
