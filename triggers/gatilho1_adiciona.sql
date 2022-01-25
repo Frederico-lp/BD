@@ -26,14 +26,13 @@ ON Episode
 
 BEGIN
     INSERT INTO Notification
-    SELECT 'Episode was added', id_User
+    SELECT NULL,'Episode ' || NEW.name || ' was added', id_User
     FROM Following, (
         SELECT id_Serie as id_of_serie
         FROM Season
         WHERE id_Serie = (
             SELECT id_Serie 
             FROM Season
-            --WHERE id = 2
             WHERE id = NEW.id_Season
             )
     )
