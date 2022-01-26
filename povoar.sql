@@ -558,7 +558,7 @@ VALUES
     (119, 15, '2021-12-15', 'posuere cubilia Curae Phasellus ornare. Fusce mollis. Duis sit amet diam eu dolor');
 
 INSERT INTO Watched
-    (id_Episode, id_User, wdate)
+    (id_Episode, id_User, wDate)
 VALUES
     (5, 13, '2022-01-01'),
     (94, 5, '2022-01-04'),
