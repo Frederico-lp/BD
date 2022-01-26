@@ -4,9 +4,8 @@
 
 PRAGMA foreign_keys = ON;
 
--- A data de lançamento de um episódio tem que ser inferior à data 
--- em que esse conteúdo é visualizado pelos utilizadores, 
--- que têm que ter subscrição ativa para ver esse mesmo conteúdo.
+-- Um utilizador tem que possuir uma subscrição ativa para visualizar episódios 
+-- de uma série e não pode ver episódios ainda por lançar.
 
 CREATE TRIGGER IF NOT EXISTS GATILHO_2
 BEFORE INSERT ON Watched
