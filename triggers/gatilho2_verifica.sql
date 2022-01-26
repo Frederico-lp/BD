@@ -4,9 +4,13 @@
 
 PRAGMA foreign_keys = ON;
 
+SELECT * FROM Watched;
+
 -- Inválido por subscrição expirada
 INSERT INTO Watched (id_Episode, id_User, wDate)
 VALUES (1, 1, '2021-09-01');
+
+SELECT * FROM Watched;
 
 -- Inválido por inserção de data anterior ao launch do episódio
 INSERT INTO Watched (id_Episode, id_User, wDate)
