@@ -4,10 +4,16 @@
 
 PRAGMA foreign_keys = ON;
 
---Lista os 10 users que mais viram episódios
-SELECT User.username, count() AS num_watched
-FROM Watched, User
-WHERE Watched.id_User = User.id
-GROUP BY id_User
-ORDER BY num_watched DESC
-LIMIT 10;
+-- Listar todos os utilizadores que apesar de possuírem uma subscrição ativa, 
+-- não possuem qualquer tipo de interação com o conteúdo multimédia
+
+SELECT id, username, fullName, email FROM User WHERE id NOT IN (
+  SELECT id_User
+  FROM Following
+  UNION
+  SELECT id_User 
+  FROM Watched
+  UNION 
+  SELECT id_User
+  FROM Comment  
+) AND subActive = true;

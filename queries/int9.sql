@@ -4,20 +4,18 @@
 
 PRAGMA foreign_keys = ON;
 
---Lista quais os comentários que foram feitos antes de um episódio ser lançado
-SELECT name, content, cDate, launchDate
-FROM Comment, Episode
-WHERE Comment.id_Episode = Episode.id
-AND DATE(Comment.cDate) < DATE(Episode.launchDate);
+-- Listar todos os episódios que foram vistos  
+-- por cada utilizador no último dia das suas subscrições.
 
--- SQLite
-/* SELECT id, username FROM User WHERE EXISTS (
-    SELECT id_User
-    FROM Following
-    UNION
-    SELECT id_User 
-    FROM Watched
-    UNION 
-    SELECT id_User
-    FROM Comment
-) AND subActive = true; */
+SELECT DISTINCT username, wDate AS watched_date, name AS episode_name
+FROM Episode E1, User U1, Watched W1
+WHERE EXISTS(
+  SELECT wDate, endDate, id_Episode, id_User
+  FROM (Watched, Subscription) 
+  JOIN User
+  ON User.id = Watched.id_User
+  WHERE U1.id = id_User AND E1.id = id_Episode
+  AND W1.wDate = wDate AND Watched.wDate = Subscription.endDate 
+);
+
+
