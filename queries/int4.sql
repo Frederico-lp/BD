@@ -5,15 +5,14 @@
 
 PRAGMA foreign_keys=ON;
 
---query for show with highest rating
-SELECT id, name, rating
-FROM Show
-WHERE rating = (
-    SELECT MAX(rating)
-    FROM Show
-)
+-- Listar quantos utilizadores que não seguem a série “Loki”
 
---query for shows with rating higher than 8
---SELECT id, name, rating
---FROM Show
---WHERE rating > 8;
+SELECT count() AS users_not_following_Loki
+FROM User
+WHERE id NOT IN (
+  SELECT id_User
+  FROM User LEFT OUTER JOIN Following
+  ON User.id = Following.id_User
+  WHERE id_Serie = 22
+  ORDER BY User.id
+);
