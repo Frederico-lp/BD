@@ -19,3 +19,5 @@ WHERE id NOT IN (
   SELECT id_User
   FROM Comment  
 ) AND subActive = true;
+
+
